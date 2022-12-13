@@ -1,0 +1,96 @@
+{% extends "base.html" %} 
+{% load static %} 
+
+{% block title %} - এলামনাই {% endblock %} 
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/campus.css' %}" />
+{% endblock %}
+
+{% block body_block %}
+
+<div class="container row px-2 mx-auto py-4 justify-content-center post-wrapper">
+
+    <div class="container home-grid">
+        <div class="sidebar .col-md-12 .col-lg-4">
+          
+      
+          <div >
+            <h5 class="posts-top">
+              সর্বশেষ 
+              <span class="text-danger">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 224 384.025"
+                  height="12"
+                >
+                  <path
+                    fill="#D60000"
+                    d="M32.352,383.168c-8.151,0-16.307-3.111-22.519-9.333c-12.444-12.444-12.444-32.604,0-45.048L146.64,192.025 L9.833,55.238c-12.444-12.444-12.444-32.604,0-45.048s32.604-12.444,45.048,0l159.286,159.286c12.444,12.444,12.444,32.604,0,45.048 L54.881,373.81C48.659,380.082,40.506,383.168,32.352,383.168z"
+                  ></path>
+                </svg>
+              </span>
+            </h5>
+            <div class="card" style="width:100%">
+              {% for post in posts|slice:":5" %}
+            <div class="card-body">
+              <h5 class="card-title">{{post.title}}</h5>
+              <p class="card-text">{{post.para1|truncatewords:10}}</p>
+              <a href="/posts/{{post.id}}" class=" text-success">বিস্তারিত</a>
+            </div> <hr>
+            {% endfor %}
+          </div>
+          </div>
+      
+        </div>
+        <div class="all-posts py-3 mx-auto px-4 .col-lg-8 .col-md-12">
+          <h5 class="posts-top">
+            এলামনাই 
+            <span class="text-danger">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 224 384.025"
+                height="12"
+              >
+                <path
+                  fill="#D60000"
+                  d="M32.352,383.168c-8.151,0-16.307-3.111-22.519-9.333c-12.444-12.444-12.444-32.604,0-45.048L146.64,192.025 L9.833,55.238c-12.444-12.444-12.444-32.604,0-45.048s32.604-12.444,45.048,0l159.286,159.286c12.444,12.444,12.444,32.604,0,45.048 L54.881,373.81C48.659,380.082,40.506,383.168,32.352,383.168z"
+                ></path>
+              </svg>
+            </span>
+          </h5>
+      
+          <div class="card-group three">
+            {% for post in alumnies %}
+            <a href="/posts/{{post.id}}" class="text-decoration-none text-body">
+            <div class="card inside-three">
+              <img
+                class="card-img-top"
+                src="../{{STATIC_URL}}{{post.img1}}"
+                alt="Card image cap"
+              />
+              <div class="card-body">
+                <h5 class="card-title font-weight-bold text-danger">
+                  {{post.title}}
+                </h5>
+                <p class="card-text">{{ post.para1|truncatewords:"25" }}</p>
+                <div class="card-text date-category">
+                  <div>
+                    <small class="text-secondary">
+                      <p id="diff" >{{post.category}} • {{post.date|date:"d F, Y"}}</p>
+                  </small>
+                </div>
+                    
+                  </div>
+              </div>
+            </div> 
+          </a> 
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      
+
+</div>
+
+{% endblock %}

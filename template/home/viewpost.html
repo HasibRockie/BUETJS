@@ -1,0 +1,496 @@
+{% extends 'base.html' %} 
+{% load static %}
+
+{% block title %} - {{post.title}} {% endblock %}  
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/viewpost.css' %}" />
+{% endblock %} 
+
+{% block body_block %}
+
+<div class="container row px-2 mx-auto py-4 justify-content-center post-wrapper">
+    <div class="post-details">
+        <h3 class="post-headline">
+            {{post.title}}
+          </h3>
+          <hr />
+          <br />
+          <div class="post-infos text-danger">
+            <small><i class="fas fa-layer-group text-secondary"></i> &nbsp; {{post.category}} &nbsp; • &nbsp; <i class="far fa-calendar-alt text-secondary"></i> &nbsp; {{post.date}} &nbsp; • &nbsp; <i class="fas fa-user text-secondary"></i>  &nbsp; রিপোর্টারঃ  &nbsp;{{post.author}}</small>
+          </div>
+          <hr />
+          <br />
+          <div class="post-body">
+      
+      
+      
+      
+              <img src="/{{STATIC_URL}}{{post.img1}}" width="100%" alt="{{post.img1caption}}" /><p class="img-caption"> {{post.img1caption}}</p> <br /> 
+            <p>{{post.para1}}</p><br /> 
+            <p>{{post.para2}}</p><br /> 
+      
+            <p>{{post.para3}}</p><br /> 
+            <p>{{post.para4}}</p><br /> 
+      
+            {% if post.img2 %}
+              <img src="/{{STATIC_URL}}{{post.img2}}" alt="{{post.img2caption}}" /><p class="img-caption"> {{post.img2caption}}</p> <br /> 
+            {% endif %}
+      
+            {% if post.para5 %}
+            <p>{{post.para5}}</p><br /> 
+            {% endif %}
+
+            {% if post.para6 %}
+            <p>{{post.para6}}</p><br /> 
+            {% endif %}
+      
+            {% if post.img3 %}
+              <img src="/{{STATIC_URL}}{{post.img3}}" alt="{{post.img3caption}}" /><p class="img-caption"> {{post.img3caption}}</p> <br /> 
+            {% endif %}
+      
+            {% if post.para7 %}
+            <p>{{post.para7}}</p><br /> 
+            {% endif %}
+
+            {% if post.para8 %}
+            <p>{{post.para8}}</p><br /> 
+            {% endif %}
+      
+            {% if post.img4 %}
+              <img src="/{{STATIC_URL}}{{post.img4}}" alt="{{post.img4caption}}" /><p class="img-caption"> {{post.img4caption}}</p> <br /> 
+            {% endif %}
+      
+            {% if post.para9 %}
+            <p>{{post.para9}}</p><br /> 
+            {% endif %}
+
+            {% if post.para10 %}
+            <p>{{post.para10}}</p><br /> 
+            {% endif %}
+      
+            {% if post.img5 %}
+              <img src="/{{STATIC_URL}}{{post.img5}}" alt="{{post.img5caption}}" /><p class="img-caption"> {{post.img5caption}}</p> <br /> 
+            {% endif %}
+      
+            {% if post.para11 %}
+            <p>{{post.para11}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para12 %}
+            <p>{{post.para12}}</p><br /> 
+            {% endif %} 
+      
+            {% if post.img6 %}
+              <img src="/{{STATIC_URL}}{{post.img6}}" alt="{{post.img6caption}}" /><p class="img-caption"> {{post.img6caption}}</p> <br /> 
+            {% endif %} 
+      
+            {% if post.para13 %}
+            <p>{{post.para13}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para14 %}
+            <p>{{post.para14}}</p><br /> 
+            {% endif %}
+      
+            {% if post.img7 %}
+              <img src="/{{STATIC_URL}}{{post.img7}}" alt="{{post.img7caption}}" /><p class="img-caption"> {{post.img7caption}}</p> <br /> 
+            {% endif %}
+      
+            {% if post.para15 %}
+            <p>{{post.para15}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para16 %}
+            <p>{{post.para16}}</p><br /> 
+            {% endif %}
+      
+            {% if post.img8 %}
+              <img src="/{{STATIC_URL}}{{post.img8}}" alt="{{post.img8caption}}" /><p class="img-caption"> {{post.img8caption}}</p> <br /> 
+            {% endif %}
+      
+            {% if post.para17 %}
+            <p>{{post.para17}}</p><br /> 
+            {% endif %}
+            
+            {% if post.para18 %}
+            <p>{{post.para18}}</p><br /> 
+            {% endif %}
+      
+            {% if post.img9 %}
+              <img src="/{{STATIC_URL}}{{post.img9}}" alt="{{post.img9caption}}" /><p class="img-caption"> {{post.img9caption}}</p> <br /> 
+            {% endif %}
+      
+            {% if post.para19 %}
+            <p>{{post.para19}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para20 %}
+            <p>{{post.para20}}</p><br /> 
+            {% endif %}
+      
+            {% if post.img10 %}
+              <img src="/{{STATIC_URL}}{{post.img10}}" alt="{{post.img10caption}}" /><p class="img-caption"> {{post.img10caption}}</p> <br /> 
+            {% endif %}
+      
+            
+            <!-- para 21 to 100 -->
+            {% if post.para21 %}
+            <p>{{post.para21}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para22 %}
+            <p>{{post.para22}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para23 %}
+            <p>{{post.para23}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para24 %}
+            <p>{{post.para24}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para25 %}
+            <p>{{post.para25}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para26 %}
+            <p>{{post.para26}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para27 %}
+            <p>{{post.para27}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para28 %}
+            <p>{{post.para28}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para29 %}
+            <p>{{post.para29}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para30 %}
+            <p>{{post.para30}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para31 %}
+            <p>{{post.para31}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para32 %}
+            <p>{{post.para32}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para33 %}
+            <p>{{post.para33}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para34 %}
+            <p>{{post.para34}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para35 %}
+            <p>{{post.para35}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para36 %}
+            <p>{{post.para36}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para37 %}
+            <p>{{post.para37}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para38 %}
+            <p>{{post.para38}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para39 %}
+            <p>{{post.para39}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para40 %}
+            <p>{{post.para40}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para41 %}
+            <p>{{post.para41}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para42 %}
+            <p>{{post.para42}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para43 %}
+            <p>{{post.para43}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para44 %}
+            <p>{{post.para44}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para45 %}
+            <p>{{post.para45}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para46 %}
+            <p>{{post.para46}}</p><br /> 
+            {% endif %}
+            
+            
+            {% if post.para47 %}
+            <p>{{post.para47}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para48 %}
+            <p>{{post.para48}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para49 %}
+            <p>{{post.para49}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para50 %}
+            <p>{{post.para50}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para51 %}
+            <p>{{post.para51}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para52 %}
+            <p>{{post.para52}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para53 %}
+            <p>{{post.para53}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para54 %}
+            <p>{{post.para54}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para55 %}
+            <p>{{post.para55}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para56 %}
+            <p>{{post.para56}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para57 %}
+            <p>{{post.para57}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para58 %}
+            <p>{{post.para58}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para59 %}
+            <p>{{post.para59}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para60 %}
+            <p>{{post.para60}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para61 %}
+            <p>{{post.para61}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para62 %}
+            <p>{{post.para62}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para63 %}
+            <p>{{post.para63}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para64 %}
+            <p>{{post.para64}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para65 %}
+            <p>{{post.para65}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para66 %}
+            <p>{{post.para66}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para67 %}
+            <p>{{post.para67}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para68 %}
+            <p>{{post.para68}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para69 %}
+            <p>{{post.para69}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para70 %}
+            <p>{{post.para70}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para71 %}
+            <p>{{post.para71}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para72 %}
+            <p>{{post.para72}}</p><br /> 
+            {% endif %}
+            
+            
+            {% if post.para73 %}
+            <p>{{post.para73}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para74 %}
+            <p>{{post.para74}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para75 %}
+            <p>{{post.para75}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para76 %}
+            <p>{{post.para76}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para77 %}
+            <p>{{post.para77}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para78 %}
+            <p>{{post.para78}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para79 %}
+            <p>{{post.para79}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para80 %}
+            <p>{{post.para80}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para81 %}
+            <p>{{post.para81}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para82 %}
+            <p>{{post.para82}}</p><br /> 
+            {% endif %}
+            
+            
+            {% if post.para83 %}
+            <p>{{post.para83}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para84 %}
+            <p>{{post.para84}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para85 %}
+            <p>{{post.para85}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para86 %}
+            <p>{{post.para86}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para87 %}
+            <p>{{post.para87}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para88 %}
+            <p>{{post.para88}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para89 %}
+            <p>{{post.para89}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para90 %}
+            <p>{{post.para90}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para91 %}
+            <p>{{post.para91}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para92 %}
+            <p>{{post.para92}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para93 %}
+            <p>{{post.para93}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para94 %}
+            <p>{{post.para94}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para95 %}
+            <p>{{post.para95}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para96 %}
+            <p>{{post.para96}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para97 %}
+            <p>{{post.para97}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para98 %}
+            <p>{{post.para98}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para99 %}
+            <p>{{post.para99}}</p><br /> 
+            {% endif %}
+      
+            {% if post.para100 %}
+            <p>{{post.para100}}</p><br /> 
+            {% endif %}
+      
+          </div>
+    </div>
+
+
+    <div class="suggested"> 
+        <h5 class="posts-top">
+          সম্পর্কিত   
+          <span class="text-danger">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 224 384.025"
+              height="12"
+            >
+              <path
+                fill="#D60000"
+                d="M32.352,383.168c-8.151,0-16.307-3.111-22.519-9.333c-12.444-12.444-12.444-32.604,0-45.048L146.64,192.025 L9.833,55.238c-12.444-12.444-12.444-32.604,0-45.048s32.604-12.444,45.048,0l159.286,159.286c12.444,12.444,12.444,32.604,0,45.048 L54.881,373.81C48.659,380.082,40.506,383.168,32.352,383.168z"
+              ></path>
+            </svg>
+          </span>
+        </h5>
+        <div class="card" style="width:100%">
+          {% for post in posts|slice:":5" %}
+        <div class="card-body">
+          <h6 class="card-title text-danger">{{post.title}}</h6>
+          <p class="card-text">{{post.para1|truncatewords:10}} <a href="/posts/{{post.id}}" class=" text-success">বিস্তারিত</a></p>
+          
+        </div> <hr>
+        {% endfor %}
+      </div>
+      </div>
+
+
+  </div>
+    
+
+{% endblock body_block %}

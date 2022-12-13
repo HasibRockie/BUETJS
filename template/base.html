@@ -1,0 +1,313 @@
+{% load i18n %}
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="JSBUET" />
+    <base href="/" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+
+    <link rel="icon" href="{% static 'images/favicon.ico' %}" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<script src="https://kit.fontawesome.com/9e9140c010.js" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=Anek+Bangla:wght@400;600;700&family=Baloo+Da+2:wght@400;600;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.maateen.me/solaiman-lipi/font.css" rel="stylesheet">
+ 
+
+    {% block styles %} {% endblock %}
+
+    <title>BUETJS {% block title %} {% endblock %}</title>
+  </head>
+  <body>
+    <div class="header bg-light py-2">
+      <div class="container">
+        <div class="row">
+          <div class="col-4">
+            <span id="date"></span> <br />
+            <span id="day"></span>
+          </div>
+          <div class="col-4 text-center logo">
+            <img
+              src="{% static 'images/logo/buet.png' %}"
+              height="110px"
+              alt="logo"
+            />
+          </div>
+          <div class="col-4 text-right d-flex justify-content-end align-items-center">
+            <a href="" class="me-4 text-reset rounded-circle">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+          </div>
+        </div>
+         
+        {% comment %} <div class="col-12 text-right web-title">
+            <h4>বুয়েট সাংবাদিক সমিতি </h4>
+          </div>
+        </div> {% endcomment %}
+
+        <!--/row-->
+      </div>
+
+      <!--container-->
+    </div>
+    <nav class="navbar navbar-expand-sm sticky-top navbar-light bg-light">
+      <div class="container text-center">
+        <a class="navbar-brand font-weight-bold" href="/">বুয়েট সাংবাদিক সমিতি</a>
+        <button
+          class="navbar-toggler navbar-toggler-right"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbar1"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse font-weight-bold justify-content-xl-around" id="navbar1">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="/">হোম </a>
+            </li>
+          </ul>
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/campus">ক্যাম্পাস</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/hall">হল</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/club">ক্লাব</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active"> 
+              <a class="nav-link" href="/sports">স্পোর্টস</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/alumni">এলামনাই </a>
+            </li>
+          </ul>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/blog">ব্লগ</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">গ্যালারি</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">যোগাযোগ</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">আমাদের কথা </a>
+            </li>
+          </ul>
+          
+        </div>
+      </div>
+    </nav>
+
+    
+  
+      <!--/row-->
+    </div>
+    <!--container-->
+
+    {% block body_block %} {% endblock body_block %}
+
+    <!-- Footer -->
+<footer class="text-center text-lg-start bg-light text-muted footer">
+    <!-- Section: Social media -->
+    <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+      <!-- Left -->
+      <div class="me-5 d-none d-lg-block">
+        <span>সামাজিক যোগাযোগ মাধ্যম:</span>
+      </div>
+      <!-- Left -->
+  
+      <!-- Right -->
+      <div>
+        <a href="" class="me-4 text-reset">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </div>
+      <!-- Right -->
+    </section>
+    <!-- Section: Social media -->
+  
+    <!-- Section: Links  -->
+    <section class="">
+      <div class="container text-center text-md-start mt-5">
+        <!-- Grid row -->
+        <div class="row mt-3">
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+            <!-- Content -->
+            <h6 class="text-uppercase fw-bold mb-4">
+              <i class="fas fa-gem me-3"></i>বুয়েট সাংবাদিক সমিতি 
+            </h6>
+            <p>
+              (website short description here )
+            </p>
+          </div>
+          <!-- Grid column -->
+  
+          <!-- Grid column -->
+          
+            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+              <!-- Links -->
+              <h6 class="text-uppercase fw-bold mb-4">
+                পেজসমূহ 
+              </h6>
+              <div class="pages">
+                <p>
+                  <a href="/" class="text-reset">হোম</a>
+                </p>
+                <p>
+                  <a href="/campus" class="text-reset">ক্যাম্পাস</a>
+                </p>
+                <p>
+                  <a href="/hall" class="text-reset">হল</a>
+                </p>
+                <p>
+                  <a href="/club" class="text-reset">ক্লাব </a>
+                </p>
+                <p>
+                  <a href="/sports" class="text-reset">স্পোর্টস  </a>
+                </p>
+              </div>
+            </div>
+            <!-- Grid column -->
+    
+            <!-- Grid column -->
+            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+              <!-- Links -->
+              <div class="pages">
+                <p class="hide-sec">
+                  <br></p>
+                <p>
+                  <a href="/alumni" class="text-reset">এলামনাই</a>
+                </p>
+                <p>
+                  <a href="/blog" class="text-reset">ব্লগ </a>
+                </p>
+                <p>
+                  <a href="#!" class="text-reset">গ্যালারি </a>
+                </p>
+                <p>
+                  <a href="#!" class="text-reset">যোগাযোগ</a>
+                </p>
+                <p>
+                  <a href="#!" class="text-reset">আমাদের কথা </a>
+                </p>
+              </div>
+            </div>
+          
+          <!-- Grid column -->
+  
+          <!-- Grid column -->
+          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold mb-4">যোগাযোগ</h6>
+            <p><i class="fas fa-home me-3"></i> বাংলাদেশ প্রকৌশল বিশ্ববিদ্যালয় (বুয়েট), ঢাকা, বাংলাদেশ </p>
+            <p>
+              <i class="fas fa-envelope me-3"></i>
+              buetjournalistsociety@gmail.com 
+            </p>
+            <p><i class="fas fa-phone me-3"></i> + ৮৮০ ১২৩ ৪৫৬ ৭৮৯</p> 
+          </div>
+          <!-- Grid column -->
+        </div>
+        <!-- Grid row -->
+      </div>
+    </section>
+    <!-- Section: Links  -->
+  
+    <!-- Copyright -->
+    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+        স্বত্ব © ২০২৩ | 
+      <a class="text-reset fw-bold" href="/">বুয়েট সাংবাদিক সমিতি </a>
+    </div>
+    <!-- Copyright -->
+  </footer>
+  <!-- Footer -->
+
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://kit.fontawesome.com/9e9140c010.js" crossorigin="anonymous"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+              {% comment %} const d = new Date();
+              document.getElementById("date").innerHTML = `${d.getFullYear()}`; {% endcomment %}
+
+
+        const toBn = n => n.replace(/\d/g, d => "০১২৩৪৫৬৭৮৯"[d])
+              
+
+
+
+    
+      var monthNames = new Array('জানুয়ারি', 'ফেব্রুয়ারি', 'মার্চ', 'এপ্রিল', 'মে', 'জুন', 'জুলাই', 'আগস্ট', 'সেপ্টেম্বর', 'অক্টোবর', 'নভেম্বর', 'ডিসেম্বর');
+
+      const days = ["রবিবার", "সোমবার", "মঙ্গলবার", "বুধবার", "বৃহস্পতিবার", "শুক্রবার", "শনিবার"];
+
+
+      var d = new Date();
+
+      var curDate = d.getDate();
+      var curMonth = d.getMonth();
+      var curYear = d.getFullYear();
+      document.getElementById("date").innerHTML = `${toBn(curDate.toString())} ${monthNames[curMonth]} ${toBn(curYear.toString())}`;
+      document.getElementById("day").innerHTML = `${days[d.getDay()]}`;
+    </script>
+
+    {% block script %} {% endblock %}
+  </body>
+</html>

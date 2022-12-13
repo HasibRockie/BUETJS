@@ -1,0 +1,310 @@
+{% extends "base.html" %} 
+{% load static %} 
+
+{% block title %} - Homepage {% endblock %} 
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}" />
+{% endblock %}
+
+{% block body_block %}
+<div class="container home-grid">
+  <div class="sidebar .col-md-12 .col-lg-4">
+    <div class="input-group">
+      <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+      <button type="button" class="btn btn-outline-primary">search</button>
+    </div> <hr> 
+
+    <div >
+      <h5 class="posts-top">
+        সর্বশেষ 
+        <span class="text-danger">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 224 384.025"
+            height="12"
+          >
+            <path
+              fill="#D60000"
+              d="M32.352,383.168c-8.151,0-16.307-3.111-22.519-9.333c-12.444-12.444-12.444-32.604,0-45.048L146.64,192.025 L9.833,55.238c-12.444-12.444-12.444-32.604,0-45.048s32.604-12.444,45.048,0l159.286,159.286c12.444,12.444,12.444,32.604,0,45.048 L54.881,373.81C48.659,380.082,40.506,383.168,32.352,383.168z"
+            ></path>
+          </svg>
+        </span>
+      </h5>
+      <div class="card" style="width:100%">
+        {% for post in posts|slice:":4" %}
+      <div class="card-body">
+        <h5 class="card-title">{{post.title}}</h5>
+        <p class="card-text">{{post.para1|truncatewords:10}}</p>
+        <a href="/posts/{{post.id}}" class=" text-success">বিস্তারিত</a>
+      </div> <hr>
+      {% endfor %}
+    </div>
+    </div>
+
+  </div>
+  <div class="all-posts py-3 mx-auto px-4 .col-lg-8 .col-md-12">
+    <h5 class="posts-top">
+      ক্যাম্পাস
+      <span class="text-danger">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 224 384.025"
+          height="12"
+        >
+          <path
+            fill="#D60000"
+            d="M32.352,383.168c-8.151,0-16.307-3.111-22.519-9.333c-12.444-12.444-12.444-32.604,0-45.048L146.64,192.025 L9.833,55.238c-12.444-12.444-12.444-32.604,0-45.048s32.604-12.444,45.048,0l159.286,159.286c12.444,12.444,12.444,32.604,0,45.048 L54.881,373.81C48.659,380.082,40.506,383.168,32.352,383.168z"
+          ></path>
+        </svg>
+      </span>
+    </h5>
+
+    <div class="card-group three">
+      {% for post in campuses|slice:":6" %}
+      <a href="/posts/{{post.id}}" class="text-decoration-none text-body">
+      <div class="card inside-three">
+        <img
+          class="card-img-top"
+          src="../{{STATIC_URL}}{{post.img1}}"
+          alt="Card image cap"
+        />
+        <div class="card-body">
+          <h5 class="card-title font-weight-bold text-danger">
+            {{post.title}}
+          </h5>
+          <p class="card-text">{{ post.para1|truncatewords:"25" }}</p>
+          <div class="card-text date-category">
+            <div>
+              <small class="text-secondar">
+                <p id="diff" >{{post.category}} • {{post.date|date:"d F, Y"}}</p>
+            </small>
+          </div>
+              
+            </div>
+        </div>
+      </div> 
+    </a> 
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<div class="container home-grid">
+  
+  <div class="items split">
+    <div class="section">
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">হল </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">ক্লাব </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">এলামনাই </button>
+        </li>
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+          <div class="card" style="width:100%">
+            {% for post in halls|slice:":3" %}
+            <a href="/posts/{{post.id}}" class="text-decoration-none text-body">
+          <div class="card-body">
+            <h5 class="card-title">{{post.title}}</h5>
+            <p class="card-text">{{post.para1|truncatewords:10}}</p>
+            
+          </div> 
+        </a>
+          <hr>
+          {% endfor %}
+        </div>
+        </div>
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+          <div class="card" style="width:100%">
+            {% for post in clubs|slice:":3" %}
+            <a href="/posts/{{post.id}}" class="text-decoration-none text-body">
+          <div class="card-body">
+            <h5 class="card-title">{{post.title}}</h5>
+            <p class="card-text">{{post.para1|truncatewords:10}}</p>
+            
+          </div> </a> <hr>
+          {% endfor %}
+        </div>
+        </div>
+        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+          <div class="card" style="width:100%">
+            {% for post in alumnies|slice:":3" %}
+            <a href="/posts/{{post.id}}" class="text-decoration-none text-body">
+          <div class="card-body">
+            <h5 class="card-title">{{post.title}}</h5>
+            <p class="card-text">{{post.para1|truncatewords:10}}</p>
+            
+          </div> </a>  <hr>
+          {% endfor %}
+        </div>
+        </div>
+      </div>
+    </div>
+
+    {% comment %} 2nd section  {% endcomment %}
+    <div class="section">
+      
+
+      <section class="pt-2 pb-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-8">
+                  <h5 class="posts-top px-3">
+                    ব্লগ 
+                    <span class="text-danger">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 224 384.025"
+                        height="12"
+                      >
+                        <path
+                          fill="#D60000"
+                          d="M32.352,383.168c-8.151,0-16.307-3.111-22.519-9.333c-12.444-12.444-12.444-32.604,0-45.048L146.64,192.025 L9.833,55.238c-12.444-12.444-12.444-32.604,0-45.048s32.604-12.444,45.048,0l159.286,159.286c12.444,12.444,12.444,32.604,0,45.048 L54.881,373.81C48.659,380.082,40.506,383.168,32.352,383.168z"
+                        ></path>
+                      </svg>
+                    </span>
+                  </h5> 
+                </div>
+                <div class="col-4 text-right">
+                    <a class="btn btn-primary mb-3 mr-1" href="#carouselExampleIndicators2" role="button" data-slide="prev">
+                        <i class="fa fa-arrow-left"></i>
+                    </a>
+                    <a class="btn btn-primary mb-3 " href="#carouselExampleIndicators2" role="button" data-slide="next">
+                        <i class="fa fa-arrow-right"></i>
+                    </a>
+                </div>
+                <div class="col-12">
+                    <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
+    
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="row">
+                                  {% for post in blogs|slice:":2" %}
+                                    <div class="col-md-6 mb-3">
+                                        <div class="card">
+                                            <img class="img-fluid" alt="100%x280" src="../{{STATIC_URL}}{{post.img1}}" >
+                                            <div class="card-body">
+                                                <h5 class="card-title text-danger">{{post.title}}</h5>
+                                                <p class="card-text">{{post.para1|truncatewords:15}} <a href="/posts/{{post.id}}" class=" text-success">বিস্তারিত</a></p>
+                                                <div>
+                                                  <small class="text-muted">
+                                                    <p id="diff" >{{post.category}} • {{post.date|date:"d F, Y"}}</p>
+                                                  </small>
+                                                </div>
+                                              </div>
+    
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                    
+                                    
+    
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="row">
+    
+                                  {% for post in blogs|slice:"2:4" %}
+                                  <div class="col-md-6 mb-3">
+                                      <div class="card">
+                                          <img class="img-fluid" alt="100%x280" src="../{{STATIC_URL}}{{post.img1}}" >
+                                          <div class="card-body">
+                                              <h5 class="card-title text-danger">{{post.title}}</h5>
+                                              <p class="card-text">{{post.para1|truncatewords:15}} <a href="/posts/{{post.id}}" class=" text-success">বিস্তারিত</a></p>
+                                              <div>
+                                                <small class="text-muted">
+                                                  <p id="diff" >{{post.category}} • {{post.date|date:"d F, Y"}}</p>
+                                                </small>
+                                              </div>
+                                            </div>
+  
+                                      </div>
+                                  </div>
+                                  {% endfor %}
+                                    
+                                    
+    
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="row">
+    
+                                  {% for post in blogs|slice:"4:6" %}
+                                  <div class="col-md-6 mb-3">
+                                      <div class="card">
+                                          <img class="img-fluid" alt="100%x280" src="../{{STATIC_URL}}{{post.img1}}" >
+                                          <div class="card-body">
+                                              <h5 class="card-title text-danger">{{post.title}}</h5>
+                                              <p class="card-text">{{post.para1|truncatewords:15}} <a href="/posts/{{post.id}}" class=" text-success">বিস্তারিত</a></p>
+
+                                              <div>
+                                                <small class="text-muted">
+                                                  <p id="diff" >{{post.category}} • {{post.date|date:"d F, Y"}}</p>
+                                                </small>
+                                              </div>
+
+                                          </div>
+                                          
+  
+                                      </div>
+                                  </div>
+                                  {% endfor %}
+                                    
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    </div>
+  </div>
+
+  
+  <div class="items">
+    <h5 class="posts-top">
+      স্পোর্টস  
+      <span class="text-danger">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 224 384.025"
+          height="12"
+        >
+          <path
+            fill="#D60000"
+            d="M32.352,383.168c-8.151,0-16.307-3.111-22.519-9.333c-12.444-12.444-12.444-32.604,0-45.048L146.64,192.025 L9.833,55.238c-12.444-12.444-12.444-32.604,0-45.048s32.604-12.444,45.048,0l159.286,159.286c12.444,12.444,12.444,32.604,0,45.048 L54.881,373.81C48.659,380.082,40.506,383.168,32.352,383.168z"
+          ></path>
+        </svg>
+      </span>
+    </h5>
+    <div class="card" style="width:100%">
+      {% for post in sports|slice:":3" %}
+    <div class="card-body">
+      <h5 class="card-title">{{post.title}}</h5>
+      <p class="card-text">{{post.para1|truncatewords:10}} <a href="/posts/{{post.id}}" class="text-success">বিস্তারিত</a></p>
+      
+    </div> <hr>
+    {% endfor %}
+  </div>
+  </div>
+</div>
+
+
+{% endblock body_block %}
+
+{% block script %} 
+<script>
+
+</script>
+
+{% endblock script %}

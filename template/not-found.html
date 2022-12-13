@@ -1,0 +1,18 @@
+{% extends 'base.html' %} 
+{% load static %}
+
+{% block title %} - 404 error {% endblock %}  
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/homepage.css' %}" />
+{% endblock %} 
+
+{% block body_block %}
+
+    <h3 class="posts-top">404! </h3> <hr>
+    <div class="all-posts">
+    
+            Nothing Found!
+    </div>
+
+{% endblock body_block %}

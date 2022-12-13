@@ -1,0 +1,63 @@
+body {
+  font-family: "SolaimanLipi", "Anek Bangla", "Baloo Da 2", "Poppins",
+    sans-serif;
+}
+
+.web-title {
+  font-weight: bold;
+  justify-content: center;
+  text-align: center;
+  padding: 10px;
+}
+
+/* .header-nav{
+  display: flex;
+  justify-content: space-around!important;
+} */
+
+.footer a{
+  text-decoration: none;
+}
+
+
+
+
+@media only screen and (max-width: 900px) {
+  .logo {
+    text-align: right;
+  }
+
+  #date,
+  #day {
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hide-sec {
+    /* visibility: hidden; */
+    display: none;
+  }
+  .footer-pages {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .pages{
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    align-items: center;
+    text-align: left;
+  }
+
+  .pages p{
+    padding: 7px;
+  }
+
+  .footer div{
+    text-align: left;
+  }
+
+  
+}
+
