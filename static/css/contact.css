@@ -6,3 +6,12 @@
     padding: 30px 60px !important;
     margin: 60px 150px !important;
 }
+
+
+@media only screen and (max-width: 900px) {
+    .contact-form{
+        padding: 20px 10px !important;
+        margin: 40px 0px !important;
+    }
+    
+}

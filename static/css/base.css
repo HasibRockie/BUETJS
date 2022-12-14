@@ -8,6 +8,7 @@ body {
   justify-content: center;
   text-align: center;
   padding: 10px;
+  flex-wrap: wrap!important;
 }
 
 /* .header-nav{

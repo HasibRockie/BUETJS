@@ -10,6 +10,6 @@ class ContactForm(forms.ModelForm):
 class CommentForm(forms.ModelForm):
     class Meta():
         model = Comment
-        # fields = ('commentor_name', 'commentor_email', 'comment')  
-        fields = '__all__'
+        fields = ('commentor_name', 'commentor_email', 'comment')  
+        # fields = '__all__'
         

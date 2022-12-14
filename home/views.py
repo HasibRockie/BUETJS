@@ -1,6 +1,7 @@
 # Create your views here.
 from django.shortcuts import render
-from home.models import Post 
+from django.http import HttpResponseRedirect 
+from home.models import Post, Comment 
 from django.template import RequestContext
 from datetime import datetime 
 from django.utils.translation import gettext as _ 
@@ -93,26 +94,36 @@ def blog(request):
     post_dic = { 'campuses' : campus[::-1], 'halls': hall[::-1], 'clubs': club[::-1], 'sports': sports[::-1], 'alumnies': alumni[::-1], 'blogs': blog[::-1], 'posts' : all_posts }
     return render(request, 'home/blog.html',context=post_dic)
 
+
 def post(request,id):
     try:
-        form = CommentForm()
+        comment_form = CommentForm()
         post = Post.objects.get(id=id)
         all_posts = Post.objects.order_by('date').reverse()
-        context = {'post': post, 'posts' : all_posts,'form': form}
+        # context = {'post': post, 'posts' : all_posts,'form': form}
 
         if request.method == "POST":
-            form = CommentForm(request.POST)
+            comment_form = CommentForm(request.POST)
 
-            if form.is_valid():
-                form.save()
-                # return render(request, 'home/viewpost.html')
+            if comment_form.is_valid():
+                instance = comment_form.save(commit=False)
+                instance.post = post 
+                instance.save() 
+                context = {'post': post, 'posts' : all_posts,'form': comment_form}
+                return render(request, 'home/viewpost.html', context)
+            else:
+                return HttpResponseRedirect('/something wrong/')  
 
+        context = {'post': post, 'posts' : all_posts,'form': comment_form}
         return render(request, 'home/viewpost.html', context)
        
         # return render(request, 'home/viewpost.html', context)
 
     except Post.DoesNotExist:
         return render(request, 'not-found.html')
+
+
+
 
 def contact(request): 
     form = ContactForm()
