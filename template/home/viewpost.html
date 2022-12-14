@@ -459,6 +459,79 @@
             {% endif %}
       
           </div>
+
+          <div class=" inside-from m-3 rounded">
+            <form  method="POST">
+                {% csrf_token %}
+                {% comment %} <h3 class="">মন্তব্য করুন</h3> <hr>
+                <div class="form-group">
+                  
+                  <input type="text" class="form-control" id="commentor_name" name="commentor_name" placeholder="আপনার নাম" required>
+                </div> <br>
+        
+                <div class="form-group">
+                  
+                  <input type="email" class="form-control" id="commentor_email" name="commentor_email" placeholder="ই-মেইল (ঐচ্ছিক)" >
+                </div> <br>
+        
+                
+                
+                <div class="form-group">
+                  
+                  <textarea class="form-control" id="comment" name="comment" rows="5" placeholder="আপনার মন্তব্য" required></textarea>
+                </div> <br>  {% endcomment %}
+
+                {{form.as_p}}
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="checkbox" onchange="document.getElementById('button').disabled = !this.checked;">
+                  <label class="form-check-label" for="button">
+                    আমি নিশ্চিত যে, মন্তব্য করতে চাই 
+                  </label>
+                </div>
+                
+                <button type="submit" class="btn btn-danger submit-btn" id="button" disabled>পাঠান</button>
+        
+              </form>
+
+              <div class="comments">
+
+                {% if not post.comments.all %}
+                <h5 class="mt-5">এখনো কোনো মন্তব্য যুক্ত হয়নি! </h5> 
+                
+                {% else %}
+
+                <h5 class="mt-5">মন্তব্যসমূহঃ </h5> <hr>
+                  {% for comment in post.comments.all  %}
+
+                  <div class="row d-flex justify-content-center">
+                    <div>
+                      <div class="shadow-0" >
+                        <div class="card-body">
+                         
+                  
+                          <div class="card mb-4">
+                            <div class="card-body">
+                              
+                              <div class="italic">
+                                <div class="d-flex flex-row align-items-center">
+                                  <h6 class="small mb-0 ms-2 text-danger">▶ {{comment.commentor_name}} • <small class="text-secondary">{{comment.commentor_email}}</small> • <small class="text-secondary">{{comment.date_added}}</small></h6>
+                                </div>
+
+                              </div>
+                              <p  class="mt-2"><i class="fa-solid fa-quote-left"></i> {{comment.comment}}</p>
+                            </div>
+                          </div>
+                  
+                          
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {% endfor %}
+
+                {% endif %}
+              </div>
+            </div>
     </div>
 
 
@@ -494,3 +567,7 @@
     
 
 {% endblock body_block %}
+
+{% block script %}
+
+{% endblock script %}

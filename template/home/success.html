@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} - Contact {% endblock %} 
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/contact.css' %}" />
+    <script
+    src="https://kit.fontawesome.com/9e9140c010.js"
+    crossorigin="anonymous"
+  ></script>
+  <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css"
+      integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7"
+      crossorigin="anonymous"
+    />
+{% endblock %} 
+
+{% block body_block %}
+
+<div class="container">
+    <div class="inside-from bg-light p-4 m-3 rounded contact-form">
+    <h5>
+        <i class="fa-solid fa-circle-check"></i>  ধন্যবাদ! আপনার মন্তব্যটি সফলভাবে প্রেরণ করা হয়েছে।
+    </h5>
+    
+    </div>
+</div>
+
+{% endblock body_block %}

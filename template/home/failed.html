@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} - Contact {% endblock %} 
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/contact.css' %}" />
+    <script
+    src="https://kit.fontawesome.com/9e9140c010.js"
+    crossorigin="anonymous"
+  ></script>
+  <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css"
+      integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7"
+      crossorigin="anonymous"
+    />
+{% endblock %} 
+
+{% block body_block %}
+
+<div class="container">
+    <div class="inside-from bg-light p-4 m-3 rounded contact-form">
+    
+        
+
+    <form class="" method="POST">
+        <h3 class="text-center">যোগাযোগ</h3> <hr>
+        <h5>
+            <i class="fa-sharp fa-solid fa-circle-xmark"></i> দুঃখিত! আপনার মন্তব্যটি ব্যার্থ হয়েছে। 
+            অনুগ্রহ করে পুণরায় চেষ্টা করুন! 
+        </h5>
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="full_name">আপনার নামঃ </label>
+          <input type="text" class="form-control" id="full_name" name="full_name" placeholder="John Doe" required>
+        </div> <br>
+
+        <div class="form-group">
+          <label for="email">ই-মেইলঃ</label>
+          <input type="email" class="form-control" id="email" name="email" placeholder="example@mail.com" required>
+        </div> <br>
+
+        <div class="form-group">
+            <label for="phone">মোবাইল নংঃ (ঐচ্ছিক) </label>
+            <input type="text" class="form-control" id="phone" name="phone" placeholder="01234567891">
+          </div> <br>
+        
+        <div class="form-group">
+          <label for="comment">আপনার মন্তব্যঃ </label>
+          <textarea class="form-control" id="comment" name="comment" rows="5" required></textarea>
+        </div> <br> 
+        
+        {% comment %} {{ form.as_p}} <br> {% endcomment %}
+        <button type="submit" class="btn btn-danger">পাঠান</button>
+
+      </form>
+    </div>
+</div>
+
+{% endblock body_block %}

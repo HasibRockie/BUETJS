@@ -4,6 +4,7 @@ from home.models import Post
 from django.template import RequestContext
 from datetime import datetime 
 from django.utils.translation import gettext as _ 
+from .forms import ContactForm, CommentForm 
 
 
 # Create your views here.
@@ -94,10 +95,36 @@ def blog(request):
 
 def post(request,id):
     try:
+        form = CommentForm()
         post = Post.objects.get(id=id)
         all_posts = Post.objects.order_by('date').reverse()
-        context = {'post': post, 'posts' : all_posts}
+        context = {'post': post, 'posts' : all_posts,'form': form}
+
+        if request.method == "POST":
+            form = CommentForm(request.POST)
+
+            if form.is_valid():
+                form.save()
+                # return render(request, 'home/viewpost.html')
 
         return render(request, 'home/viewpost.html', context)
+       
+        # return render(request, 'home/viewpost.html', context)
+
     except Post.DoesNotExist:
         return render(request, 'not-found.html')
+
+def contact(request): 
+    form = ContactForm()
+
+    if request.method == 'POST':
+        form = ContactForm(request.POST) 
+
+        if form.is_valid():
+            form.save()
+            return render(request,'home/success.html') 
+        else:
+            return render(request,'home/failed.html') 
+
+    return render(request, 'home/contact.html',{'form':form})
+

@@ -151,3 +151,24 @@ class Post(models.Model):
     def __str__(self):
         return self.title  
 
+
+class Contact(models.Model):
+    full_name = models.CharField(max_length=128) 
+    email = models.EmailField(max_length=256 )
+    phone = models.CharField(max_length=20, blank=True, default='')
+    comment = models.TextField(max_length=2000)
+
+    def __str__(self):
+        return self.email  
+
+
+class Comment(models.Model):
+    post = models.ForeignKey(Post,related_name="comments", on_delete=models.CASCADE)
+    commentor_name = models.CharField(max_length=255)
+    commentor_email = models.EmailField(max_length=128, blank=True)
+    comment = models.TextField(max_length=2000)
+    date_added = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return 'Commented by {} on {}'.format(self.commentor_name, self.post.title)  
+
