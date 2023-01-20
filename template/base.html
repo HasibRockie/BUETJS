@@ -36,24 +36,36 @@
     <title>BUETJS {% block title %} {% endblock %}</title>
   </head>
   <body>
+    
     <div class="header bg-light py-2">
       <div class="container">
         <div class="row">
-          <div class="col-4">
+          <div class="col-6  col-sm-4 hide-small">
             <span id="date"></span> <br />
             <span id="day"></span>
           </div>
-          <div class="col-4 text-center logo">
+          <div class="col-6 col-sm-4 text-center logo">
             <img
               src="{% static 'images/logo/buet.png' %}"
               height="110px"
               alt="logo"
             />
           </div>
-          <div class="col-4 text-right d-flex justify-content-end align-items-center">
+          <div class="col-6 col-sm-4 text-right d-flex justify-content-end align-items-center soc-icon">
             <a href="" class="me-4 text-reset rounded-circle">
                 <i class="fab fa-facebook-f"></i>
               </a>
+              <a href="" class="me-4 text-reset">
+                <i class="fa-brands fa-linkedin-in"></i>
+              </a>
+              <a href="" class="me-4 text-reset">
+                <i class="fa-solid fa-envelope"></i>
+              </a>
+          </div>
+          <div class="col-12 text-center">
+            <h6 class="description m-2 font-weight-bold">
+              "সত্যে, সাম্যে, একতায়" মূলমন্ত্র নিয়ে গঠিত বাংলাদেশ প্রকৌশল বিশ্ববিদ্যালয় (বুয়েট) সংবাদিক সমিতি।
+            </h6>
           </div>
         </div>
          
@@ -67,9 +79,9 @@
 
       <!--container-->
     </div>
-    <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light shadow mb-3">
       <div class="container text-center">
-        <a class="navbar-brand font-weight-bold" href="/">বুয়েট সাংবাদিক সমিতি</a>
+        
         <button
           class="navbar-toggler navbar-toggler-right"
           type="button"
@@ -96,7 +108,7 @@
           </ul>
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="/club">ক্লাব</a>
+              <a class="nav-link" href="/club">ক্লাব ও এক্টিভিটিজ</a>
             </li>
           </ul>
           <ul class="navbar-nav ml-auto">
@@ -104,11 +116,7 @@
               <a class="nav-link" href="/sports">স্পোর্টস</a>
             </li>
           </ul>
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="/alumni">এলামনাই </a>
-            </li>
-          </ul>
+         
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
               <a class="nav-link" href="/blog">ব্লগ</a>
@@ -143,12 +151,12 @@
     {% block body_block %} {% endblock body_block %}
 
     <!-- Footer -->
-<footer class="text-center text-lg-start bg-light text-muted footer">
+<footer class="text-center text-lg-start bg-light text-muted footer shadow-lg mt-3">
     <!-- Section: Social media -->
-    <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+    <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom color-sec">
       <!-- Left -->
       <div class="me-5 d-none d-lg-block">
-        <span>সামাজিক যোগাযোগ মাধ্যম:</span>
+        <span>যোগাযোগ মাধ্যম:</span>
       </div>
       <!-- Left -->
   
@@ -156,6 +164,12 @@
       <div>
         <a href="" class="me-4 text-reset">
           <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="" class="me-4 text-reset">
+          <i class="fa-brands fa-linkedin-in"></i>
+        </a>
+        <a href="" class="me-4 text-reset">
+          <i class="fa-solid fa-envelope"></i>
         </a>
       </div>
       <!-- Right -->

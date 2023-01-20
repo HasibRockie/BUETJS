@@ -20,12 +20,30 @@ body {
   text-decoration: none;
 }
 
+.color-sec{
+  background-color: #ac1f26bd;
+  color: white;
+}
+
+.description{
+  color: #ac1f26
+}
+
 
 
 
 @media only screen and (max-width: 900px) {
   .logo {
+    text-align: center;
+  }
+
+  .soc-icon{
     text-align: right;
+  }
+
+  .hide-small{
+    /* visibility:hidden; */
+    display: none;
   }
 
   #date,
@@ -60,5 +78,10 @@ body {
   }
 
   
+  .color-sec{
+    display: flex !important;
+    justify-content: flex-end !important;
+  }
+
 }
 
