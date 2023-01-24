@@ -10,6 +10,7 @@ urlpatterns = [
     path('club/',views.club, name="club"),
     path('sports/',views.sports, name="sports"),
     path('alumni/',views.alumni, name="alumni"),
+    path('gellery/',views.gellery,name="gellery"),
     path('blog/',views.blog, name="blog"),
     path('contact/',views.contact, name="contact"),
     path('posts/<str:id>/',views.post, name="post"),

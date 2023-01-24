@@ -1,7 +1,7 @@
 # Create your views here.
 from django.shortcuts import render
 from django.http import HttpResponseRedirect 
-from home.models import Post, Comment 
+from home.models import Post, Comment ,Gellery
 from django.template import RequestContext
 from datetime import datetime 
 from django.utils.translation import gettext as _ 
@@ -25,7 +25,8 @@ def index(request):
     alumni = Post.objects.filter(category='এলামনাই')
     blog = Post.objects.filter(category='ব্লগ') 
     all_posts = Post.objects.order_by('date').reverse()
-    post_dic = { 'campuses' : campus[::-1], 'halls': hall[::-1], 'clubs': club[::-1], 'sports': sports[::-1], 'alumnies': alumni[::-1], 'blogs': blog[::-1], 'posts' : all_posts }
+    images = Gellery.objects.order_by('date').reverse()
+    post_dic = { 'campuses' : campus[::-1], 'halls': hall[::-1], 'clubs': club[::-1], 'sports': sports[::-1], 'alumnies': alumni[::-1], 'blogs': blog[::-1], 'posts' : all_posts, 'images':images }
     return render(request, 'home/index.html',context=post_dic)
 
 def campus(request):
@@ -93,6 +94,18 @@ def blog(request):
     all_posts = Post.objects.order_by('date').reverse()
     post_dic = { 'campuses' : campus[::-1], 'halls': hall[::-1], 'clubs': club[::-1], 'sports': sports[::-1], 'alumnies': alumni[::-1], 'blogs': blog[::-1], 'posts' : all_posts }
     return render(request, 'home/blog.html',context=post_dic)
+
+def gellery(request):
+    campus = Post.objects.filter(category='ক্যাম্পাস')
+    hall = Post.objects.filter(category='হল')
+    club = Post.objects.filter(category='ক্লাব')
+    sports = Post.objects.filter(category='স্পোর্টস')
+    alumni = Post.objects.filter(category='এলামনাই')
+    blog = Post.objects.filter(category='ব্লগ') 
+    all_posts = Post.objects.order_by('date').reverse()
+    images = Gellery.objects.order_by('date').reverse()
+    post_dic = { 'campuses' : campus[::-1], 'halls': hall[::-1], 'clubs': club[::-1], 'sports': sports[::-1], 'alumnies': alumni[::-1], 'blogs': blog[::-1], 'posts' : all_posts , 'images':images}
+    return render(request,'home/gellery.html',context=post_dic)
 
 
 def post(request,id):

@@ -297,7 +297,62 @@
     {% endfor %}
   </div>
   </div>
+
 </div>
+
+
+{% comment %} carousel images  {% endcomment %}
+<div class="row p-3 m-0 bg-dark text-light">
+<div class="col-12">
+  <h5 class="posts-top px-3">
+    গ্যালারি  
+    <span class="text-danger">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 224 384.025"
+        height="12"
+      >
+        <path
+          fill="#D60000"
+          d="M32.352,383.168c-8.151,0-16.307-3.111-22.519-9.333c-12.444-12.444-12.444-32.604,0-45.048L146.64,192.025 L9.833,55.238c-12.444-12.444-12.444-32.604,0-45.048s32.604-12.444,45.048,0l159.286,159.286c12.444,12.444,12.444,32.604,0,45.048 L54.881,373.81C48.659,380.082,40.506,383.168,32.352,383.168z"
+        ></path>
+      </svg>
+    </span>
+  </h5> 
+</div>
+
+<div class="col-12">
+  <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
+
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+            <div class="row">
+              {% for image in images|slice:":6" %}
+                <div class="col-md-4 mb-3 mt-3">
+                    <div class="card">
+                        <img class="img-fluid" alt="100%x280" src="../{{STATIC_URL}}{{image.image}}" >
+                        <div class="card-body">
+                            <p class="card-title text-danger">{{image.caption}}</p>
+                            <div>
+                              <small class="text-muted">
+                                • {{image.date|date:"d F, Y"}}</p>
+                              </small>
+                            </div>
+                          </div>
+                    </div>
+                </div>
+                {% endfor %}
+                
+            </div>
+        </div>
+      </div>
+  </div>
+</div> 
+
+</div>
+
+
+
 
 
 {% endblock body_block %}
