@@ -153,10 +153,9 @@ class Post(models.Model):
         return self.title  
 
 class Gellery(models.Model):
-    id = models.AutoField(primary_key=True)
-    date = models.DateField(default=datetime.datetime.now)
-    image = models.ImageField(upload_to ='static/uploads/gellery', blank=True)
-    caption = models.CharField(max_length=500, blank=True)
+    date = models.DateField(default=datetime.datetime.now, null=True, blank=True)
+    image = models.ImageField(upload_to ='static/uploads/gellery', blank=True, null=True)
+    caption = models.CharField(max_length=500, blank=True, null=True)
 
     def __str__(self):
         return '{} . {} - {}'.format(self.id,self.caption,self.date)

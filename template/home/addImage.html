@@ -25,9 +25,6 @@
                 <p class="text-muted mb-1">@{{request.user.username}}</p>
                 <div class="d-flex justify-content-center mb-2">
                   <a type="button" href="/profile" class="btn btn-outline-primary ms-1">Profile</a>
-				  {% if request.user.is_staff %}
-					<a type="button" href="/dashboard" class="btn btn-outline-primary ms-1">Dashboard</a>
-					{% endif %}
                 </div>
               </div>
             </div>
@@ -37,41 +34,32 @@
 
 
 		<div class="col-lg-8 section-center">
-            <h3 class="text-bold text-center">Edit Your Profile </h3> <hr>
+            <h3 class="text-bold text-center">Edit Image</h3> <hr>
+            
 			<div class="container">
 				<div class="row">
 					<div class="booking-form">
 						<form method="POST" action="" enctype="multipart/form-data">
                             {% csrf_token %}
 							{% comment %} {{form.as_p}} {% endcomment %}
+							
 							<div class="row">
-								<div class="col-md-6">
+							
+								<div class="col-md-12">
 									<div class="form-group">
-										<span class="form-label">Full Name</span>
-										<input class="form-control" type="text" id="name" name="name" value="{{user.name}}">
-									</div>
-								</div>
-								<div class="col-md-6">
-									<div class="form-group">
-										<span class="form-label">Email</span>
-										<input class="form-control" type="text" id="email" name="email" value={{user.email}}>
+										<span class="form-label">Image</span>
+										<input class="form-control" type="file" name="image" accept="image/*" id="image">
 									</div>
 								</div>
 							</div>
-							<div class="row">
-								<div class="col-md-6">
+                            <div class="row">
+								<div class="col-md-12">
 									<div class="form-group">
-										<span class="form-label">Phone No.</span>
-										<input class="form-control" type="text" id="phone" value={{user.phone}} name="phone" required>
+										<span class="form-label">Caption</span>
+										<input class="form-control" type="textarea" rows="5" id="caption" name="caption" >
 									</div>
 								</div>
-							
-								<div class="col-md-6">
-									<div class="form-group">
-										<span class="form-label">Profile Picture</span>
-										<input class="form-control" type="file" name="profile_pic" accept="image/*" id="profile_pic">
-									</div>
-								</div>
+								
 							</div>
 							<div class="row">
 								

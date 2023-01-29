@@ -13,7 +13,7 @@ from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required 
 from .decorators import unauthenticated_user, allowed_users, admin_only
 from .models import Viewer
-from .forms import ViewerForm
+from .forms import ViewerForm, GellaryForm, PostForm
 
 
 # Create your views here.
@@ -219,6 +219,7 @@ def profile(request):
     return render(request,'home/profile.html',context) 
 
 
+@allowed_users(allowed_roles=['viewer','admin'])
 def accountSettings(request):
     user = request.user.viewer  
     form = ViewerForm(instance=user)
@@ -231,3 +232,86 @@ def accountSettings(request):
 
     context = {'form' : form ,'user': user}
     return render(request,'home/edit.html',context)
+
+@admin_only
+def editImage(request,id):
+    image = Gellery.objects.get(id=id) 
+    form = GellaryForm(instance=image)
+
+    if request.method == "POST":
+        form = GellaryForm(request.POST, request.FILES, instance=image)
+        if form.is_valid():
+            form.save()
+            print("msg : ",messages)
+            return redirect('dashboard')
+        else:
+            print(messages)
+
+    context = {'form' : form ,'image': image}
+    return render(request,'home/edit_image.html',context)
+
+
+@admin_only
+def editPost(request,id):
+    post = Post.objects.get(id=id) 
+    form = PostForm(instance=post)
+
+    if request.method == "POST":
+        form = GellaryForm(request.POST, request.FILES, instance=post)
+        if form.is_valid():
+            print(form) 
+            form.save()
+            return redirect('dashboard')
+        else:
+            print(form)
+
+    context = {'form' : form ,'post': post}
+    return render(request,'home/edit_post.html',context)
+
+@admin_only
+def deleteImage(request,id):
+    image = Gellery.objects.get(id=id)
+    image.delete()
+    return redirect('dashboard')
+
+
+@admin_only
+def deletePost(request,id):
+    post = Post.objects.get(id=id)
+    post.delete()
+    return redirect('dashboard')
+
+@admin_only
+def addImage(request): 
+    form = GellaryForm(request.POST, request.FILES)
+
+    if request.method == 'POST':
+        form = GellaryForm(request.POST, request.FILES)
+
+        if form.is_valid():
+            form.save()
+            return redirect('dashboard') 
+        else:
+            print(form)
+
+    return render(request, 'home/addImage.html',{'form':form})
+
+
+@login_required(login_url='signin')
+@admin_only
+def dashboard(request):
+    campus = Post.objects.filter(category='ক্যাম্পাস')
+    hall = Post.objects.filter(category='হল')
+    club = Post.objects.filter(category='ক্লাব')
+    sports = Post.objects.filter(category='স্পোর্টস')
+    alumni = Post.objects.filter(category='এলামনাই')
+    blog = Post.objects.filter(category='ব্লগ') 
+    all_posts = Post.objects.order_by('date').reverse()
+    images = Gellery.objects.order_by('date').reverse()
+    viewers = Viewer.objects.all()
+    total_posts = all_posts.count()
+    total_viewers = viewers.count()
+
+    context = { 'campuses' : campus[::-1], 'halls': hall[::-1], 'clubs': club[::-1], 'sports': sports[::-1], 'alumnies': alumni[::-1], 'blogs': blog[::-1], 'posts' : all_posts, 'images':images,"viewers":viewers,"total_posts":total_posts, "total_viewers":total_viewers }
+
+    return render(request,'home/dashboard.html',context)

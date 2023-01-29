@@ -19,4 +19,10 @@ urlpatterns = [
     path('logout/', views.logoutUser, name="logout"),
     path('profile/', views.profile, name="profile"),
     path('profile/edit/', views.accountSettings, name="edit"),
+    path('dashboard/', views.dashboard, name="dashboard"),
+    path('dashboard/edit/images/<str:id>/',views.editImage, name="editImage"),
+    path('dashboard/edit/posts/<str:id>/',views.editPost, name="editPost"),
+    path('dashboard/edit/images/<str:id>/delete',views.deleteImage, name="deleteImage"),
+    path('dashboard/edit/posts/<str:id>/delete',views.deletePost, name="deletePost"),
+    path('dashboard/add/image/',views.addImage, name="addImage"),
 ]

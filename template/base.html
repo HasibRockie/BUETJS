@@ -154,6 +154,9 @@
           
             <div class="dropdown-menu nav-item" aria-labelledby="dropdownMenuLink">
               <a class="dropdown-item nav-link" href="/profile">Profile</a>
+              {% if request.user.is_staff %}
+              <a class="dropdown-item nav-link" href="/dashboard">Dashboard</a>
+              {% endif %}
               <a class="dropdown-item nav-link btn btn-danger" href="/logout">Log Out</a>
             </div>
           </ul>

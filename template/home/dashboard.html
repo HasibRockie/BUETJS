@@ -1,0 +1,196 @@
+
+{% extends "base.html" %} 
+{% load static %} 
+
+{% block title %} - Schedule {% endblock %} 
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/schedule.css' %}" />
+{% endblock %}
+
+{% block body_block %}
+
+<div class="dashboard p-4">
+    {% comment %} <div class="customers">
+        <h2>Customers:</h2>
+        {% for customer in customers  %}
+            <li>{{customer.name}}</li>
+        {% endfor %}
+    </div>
+    <div class="customers">
+        <h2>Orders:</h2>
+        {% for order in orders  %}
+            <li>{{order.customer.name}} - {{order.product.name}} - {{order.status}}</li>
+        {% endfor %}
+    </div>
+    <div class="customers">
+        <h2>Approved: {{approved}}</h2>    
+        <h2>Pending: {{pending}}</h2>    
+    </div> {% endcomment %}
+
+    <div class="row">
+
+
+    <div class="col-lg-4">
+        <div class="card mb-4">
+          <div class="card-body text-center">
+            <img src="{{request.user.viewer.profile_pic.url}}" alt="avatar"
+              class="rounded-circle img-fluid" style="width: 150px; height:150px;">
+            <h5 class="my-3">{{request.user.viewer.name}}</h5>
+            <p class="text-muted mb-1">@{{request.user.username}}
+                {% if request.user.is_staff %}
+                <span class="text-success"> ▶ admin</span>
+                {% endif %}
+
+            </p>
+            <div class="d-flex justify-content-center mb-2">
+              <a type="button" href="/profile" class="btn btn-outline-primary ms-1">Profile</a>
+              <a type="button" href="/profile/edit" class="btn btn-outline-primary ms-1">Edit Profile</a>
+              <a type="button" href="/dashboard" class="btn btn-outline-primary ms-1">Dashboard</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card mb-4">
+            <h5 class="text-success p-3">Summery</h5>
+            <div class="card-body">
+              <p class="text-muted mb-1">Total Posts: <span class="text-danger">{{total_posts}}</span></p>
+              <p class="text-muted mb-1">Registered Viewres:  <span class="text-danger">{{total_viewers}}</span></p>
+              <p class="text-muted mb-1">Total Images:  <span class="text-danger">{{images|length}}</span></p>
+              <p class="text-muted mb-1">Campus Posts: {{campuses|length}}</p>
+              <p class="text-muted mb-1">Club Posts: {{clubs|length}}</p>
+              <p class="text-muted mb-1">Hall Posts: {{halls|length}}</p>
+              <p class="text-muted mb-1">Blog Posts: {{blogs|length}}</p>
+              <p class="text-muted mb-1">Alumni Posts: {{alumnies|length}}</p>
+              <p class="text-muted mb-1">Sport Posts: {{sports|length}}</p> <hr>
+              <p class="text-muted mb-1"><a href="#" class="btn btn-danger">Add Post</a>
+              <a href="dashboard/add/image" class="btn btn-danger">Add Image</a></p>
+            </div>
+          </div>
+        
+      </div>
+
+   
+      <div class="col-lg-8">
+        <div class="card mb-4">
+          <div class="card-body">
+            <h2 class="text-center text-danger">Admin Manage </h2> <hr>
+    <table class="table">
+        <h5 class="text-danger font-weight-bold">Posts Details</h5>
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Post Name</th>
+            <th scope="col">Cateogory</th>
+            <th scope="col">Author</th>
+            <th scope="col">Post Date</th>
+            <th scope="col">Edit Post</th>
+            <th scope="col">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for post in posts %}
+            
+            
+          <tr>
+            <th scope="row"></th>
+            <td>{{post.title}}</td>
+            <td>{{post.category}}</td>
+            <td>{{post.author}}</td>
+            <td>{{post.date}}</td>
+            <td><a class="btn btn-success" href="dashboard/edit/posts/{{post.id}}">Edit</a></td>
+            <td><a href="dashboard/edit/posts/{{post.id}}/delete" class="btn btn-danger">Delete</a></td>
+          </tr>
+
+          {% endfor %}
+          
+        </tbody>
+      </table>
+
+
+      {% comment %} Viewers  {% endcomment %}
+      <table class="table">
+        <h5 class="text-danger font-weight-bold">Viewers Informations</h5>
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Viewers</th>
+            <th scope="col">Username</th>
+            <th scope="col">E-mail</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Signup Date</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for viewer in viewers %}
+            
+            
+          <tr>
+            <th scope="row">{{order.id}}</th>
+            <td>{{viewer.name}}</td>
+            <td>@{{viewer.user.username}}</td>
+            <td>{{viewer.email}}</td>
+            <td>{{viewer.phone}}</td>
+            <td>{{viewer.date_created}}</td>
+          </tr>
+
+          {% endfor %}
+          
+        </tbody>
+      </table>
+      
+      {% comment %} Gellary  {% endcomment %}
+      <table class="table">
+        <h5 class="text-danger font-weight-bold">Gellary</h5>
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Image</th>
+            <th scope="col">Caption</th>
+            <th scope="col">Date Created</th> 
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for image in images %}
+            
+            
+          <tr>
+            <th scope="row d-flex align-items-center"></th>
+            <td><img src="{{image.image.url}}" alt="image"
+                class="rounded img-fluid" style="width: 150px;"></td>
+            <td>{{image.caption}}</td>
+            <td>{{image.date}}</td>
+            <td><a href="dashboard/edit/images/{{image.id}}" class="btn btn-success">Edit</a></td>
+            <td><a href="dashboard/edit/images/{{image.id}}/delete" class="btn btn-danger">Delete</a></td>
+            
+          </tr>
+
+          {% endfor %}
+          
+        </tbody>
+      </table>
+
+
+
+    </div>
+</div>
+</div>
+    
+
+</div>
+
+
+</div>
+
+{% endblock body_block %}
+
+{% block script %} 
+
+    <script>
+
+    </script>
+
+
+{% endblock script %}
