@@ -18,11 +18,10 @@ CATEGORIES = (
 
 # Create your models here.
 class Post(models.Model):
-    id = models.AutoField(primary_key=True)
-    date = models.DateField(default=datetime.datetime.now)
-    category = models.CharField(max_length=100, choices=CATEGORIES, default='ব্যক্তিগত')
+    # id = models.AutoField(primary_key=True)
+    date = models.DateField(default=datetime.datetime.now, null=True, blank=True)
+    category = models.CharField(max_length=100, choices=CATEGORIES, default='ক্যাম্পাস', null=True)
     title = models.CharField(max_length=400)
-    short_caption = models.TextField(max_length=400, default=' ')
     para1 = models.TextField(blank=True)
     para2 = models.TextField(blank=True)
     para3 = models.TextField(blank=True)

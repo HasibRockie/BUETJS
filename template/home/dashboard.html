@@ -63,7 +63,7 @@
               <p class="text-muted mb-1">Blog Posts: {{blogs|length}}</p>
               <p class="text-muted mb-1">Alumni Posts: {{alumnies|length}}</p>
               <p class="text-muted mb-1">Sport Posts: {{sports|length}}</p> <hr>
-              <p class="text-muted mb-1"><a href="#" class="btn btn-danger">Add Post</a>
+              <p class="text-muted mb-1"><a href="dashboard/add/post" class="btn btn-danger">Add Post</a>
               <a href="dashboard/add/image" class="btn btn-danger">Add Image</a></p>
             </div>
           </div>
@@ -108,36 +108,7 @@
       </table>
 
 
-      {% comment %} Viewers  {% endcomment %}
-      <table class="table">
-        <h5 class="text-danger font-weight-bold">Viewers Informations</h5>
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Viewers</th>
-            <th scope="col">Username</th>
-            <th scope="col">E-mail</th>
-            <th scope="col">Phone</th>
-            <th scope="col">Signup Date</th>
-          </tr>
-        </thead>
-        <tbody>
-            {% for viewer in viewers %}
-            
-            
-          <tr>
-            <th scope="row">{{order.id}}</th>
-            <td>{{viewer.name}}</td>
-            <td>@{{viewer.user.username}}</td>
-            <td>{{viewer.email}}</td>
-            <td>{{viewer.phone}}</td>
-            <td>{{viewer.date_created}}</td>
-          </tr>
 
-          {% endfor %}
-          
-        </tbody>
-      </table>
       
       {% comment %} Gellary  {% endcomment %}
       <table class="table">
@@ -173,6 +144,36 @@
       </table>
 
 
+            {% comment %} Viewers  {% endcomment %}
+            <table class="table">
+              <h5 class="text-danger font-weight-bold">Viewers Informations</h5>
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Viewers</th>
+                  <th scope="col">Username</th>
+                  <th scope="col">E-mail</th>
+                  <th scope="col">Phone</th>
+                  <th scope="col">Signup Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                  {% for viewer in viewers %}
+                  
+                  
+                <tr>
+                  <th scope="row">{{order.id}}</th>
+                  <td>{{viewer.name}}</td>
+                  <td>@{{viewer.user.username}}</td>
+                  <td>{{viewer.email}}</td>
+                  <td>{{viewer.phone}}</td>
+                  <td>{{viewer.date_created}}</td>
+                </tr>
+      
+                {% endfor %}
+                
+              </tbody>
+            </table>
 
     </div>
 </div>

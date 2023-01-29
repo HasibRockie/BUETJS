@@ -25,4 +25,5 @@ urlpatterns = [
     path('dashboard/edit/images/<str:id>/delete',views.deleteImage, name="deleteImage"),
     path('dashboard/edit/posts/<str:id>/delete',views.deletePost, name="deletePost"),
     path('dashboard/add/image/',views.addImage, name="addImage"),
+    path('dashboard/add/post/',views.addPost, name="addPost"),
 ]

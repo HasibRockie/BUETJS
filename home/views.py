@@ -257,9 +257,8 @@ def editPost(request,id):
     form = PostForm(instance=post)
 
     if request.method == "POST":
-        form = GellaryForm(request.POST, request.FILES, instance=post)
+        form = PostForm(request.POST, request.FILES, instance=post)
         if form.is_valid():
-            print(form) 
             form.save()
             return redirect('dashboard')
         else:
@@ -295,6 +294,21 @@ def addImage(request):
             print(form)
 
     return render(request, 'home/addImage.html',{'form':form})
+
+@admin_only
+def addPost(request): 
+    form = PostForm(request.POST, request.FILES)
+
+    if request.method == 'POST':
+        form = PostForm(request.POST, request.FILES)
+
+        if form.is_valid():
+            form.save()
+            return redirect('dashboard') 
+        else:
+            print(form)
+
+    return render(request, 'home/addPost.html',{'form':form})
 
 
 @login_required(login_url='signin')
