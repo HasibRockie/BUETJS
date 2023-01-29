@@ -461,18 +461,19 @@
           </div>
 
           <div class=" inside-from m-3 rounded">
+            {% if request.user.is_authenticated %}
             <form  method="POST">
                 {% csrf_token %}
                 <h3 class="">মন্তব্য করুন</h3> <hr>
-                <div class="form-group">
+                {% comment %} <div class="form-group">
                   
-                  <input type="text" class="form-control" id="commentor_name" name="commentor_name" placeholder="আপনার নাম" required>
+                  <input type="text" class="form-control" id="commentor_name" name="commentor_name" value="{{request.user.first_name}} {{request.user.last_name}}" placeholder="আপনার নাম" disabled required>
                 </div> <br>
         
                 <div class="form-group">
                   
-                  <input type="email" class="form-control" id="commentor_email" name="commentor_email" placeholder="ই-মেইল (ঐচ্ছিক)" >
-                </div> <br>
+                  <input type="email" class="form-control" id="commentor_email" name="commentor_email" value="{{request.user.email}}" placeholder="ই-মেইল (ঐচ্ছিক)" disabled >
+                </div> <br> {% endcomment %}
         
                 
                 
@@ -489,9 +490,19 @@
                   </label>
                 </div>
                 
+                <div>
+                  <span class="text-danger">⚠️ আপনি পরবর্তীতে আপনার মন্তব্যটি মুছতে পারবেন না! </span>
+                </div>
+                
                 <button type="submit" class="btn btn-danger submit-btn" id="button" disabled>পাঠান</button>
         
               </form>
+              {% else %}
+              <div class="goto">
+                <h5 class="mt-5">মন্তব্য করতে লগিন করুন </h5>
+                <a href="/signin" class="btn btn-secondary">লগিন</a>
+              </div>
+              {% endif %}
 
               <div class="comments">
 
@@ -512,18 +523,23 @@
                           <div class="card mb-4">
                             <div class="card-body">
                               
-                              <div class="italic">
-                                <div class="d-flex flex-row align-items-center">
-                                  <h6 class="small mb-0 ms-2 text-danger">▶ {{comment.commentor_name}} •
-                                    {% if comment.commentor_email %}
-
-                                    <small class="text-secondary">{{comment.commentor_email}}</small> •
-                                    {% endif %}
-                                     <small class="text-secondary">{{comment.date_added}}</small></h6>
+                              <div class="italic d-flex">
+                                <div>
+                                  <img src="{{comment.user.viewer.profile_pic.url}}" alt="avatar"
+                  class="rounded-circle img-fluid" style="width: 50px;">
                                 </div>
+                                <div class="px-2">
+                                  <div class="d-flex flex-row align-items-center"><h6 class="small mb-0 ms-2 text-danger">▶ {{comment.user.viewer.name}} •
+                                    {% if comment.user.email %}
 
+                                    <small class="text-secondary">{{comment.user.email}}</small> •
+                                    {% endif %}
+                                     <small class="text-secondary">{{comment.date_added}}</small></h6> </div>
+                                  <div>
+                                     <p class="mt-2 px-3"><i class="fa-solid fa-quote-left"></i> {{comment.comment}}</p>
+                                    </div>
+                                    </div>
                               </div>
-                              <p  class="mt-2"><i class="fa-solid fa-quote-left"></i> {{comment.comment}}</p>
                             </div>
                           </div>
                   

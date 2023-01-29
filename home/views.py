@@ -1,11 +1,19 @@
 # Create your views here.
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponseRedirect 
-from home.models import Post, Comment ,Gellery
+from home.models import Post, AllComment ,Gellery
 from django.template import RequestContext
 from datetime import datetime 
 from django.utils.translation import gettext as _ 
-from .forms import ContactForm, CommentForm 
+from .forms import ContactForm, CommentForm, CreateUserForm
+from django.contrib.auth.forms import UserCreationForm 
+from django.contrib import messages
+from django.contrib.auth.models import Group 
+from django.contrib.auth import authenticate,login,logout
+from django.contrib.auth.decorators import login_required 
+from .decorators import unauthenticated_user, allowed_users, admin_only
+from .models import Viewer
+from .forms import ViewerForm
 
 
 # Create your views here.
@@ -120,7 +128,8 @@ def post(request,id):
 
             if comment_form.is_valid():
                 instance = comment_form.save(commit=False)
-                instance.post = post 
+                instance.post = post
+                instance.user = request.user
                 instance.save() 
                 context = {'post': post, 'posts' : all_posts,'form': comment_form}
                 return render(request, 'home/viewpost.html', context)
@@ -152,3 +161,73 @@ def contact(request):
 
     return render(request, 'home/contact.html',{'form':form})
 
+
+@unauthenticated_user
+def signup(request):
+    form = CreateUserForm()
+
+    if(request.method == "POST"):
+        form = CreateUserForm(request.POST)
+        print(form) 
+        if form.is_valid():
+            user = form.save()
+            username = form.cleaned_data.get('username')
+            # group = Group.objects.get(name="customers")
+            # user.groups.add(group)
+
+            # Customer.objects.create(user = user, name = user.username)
+
+            messages.success(request,"Accout was created successfully for " + username )
+            return redirect('signin')
+
+        else:
+            print(messages)
+
+    context = {'form':form}
+    return render(request, 'home/signup.html',context)
+
+@unauthenticated_user
+def signin(request):
+    
+    
+    if request.method == "POST":
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+
+        user = authenticate(request,username = username, password = password)
+
+        if user is not None:
+            login(request,user)
+            return redirect("/")
+        else:
+            messages.info(request,"username or password is incorrect")
+                
+    context = {}
+    return render(request, 'home/signin.html', context)
+
+def logoutUser(request):
+    logout(request)
+    return redirect("signin")
+
+
+@login_required(login_url='signin')
+@allowed_users(allowed_roles=['viewer','admin'])
+def profile(request):
+    viewer = request.user.viewer
+    context = {'viewer': viewer}
+    print(request.user.viewer)
+    return render(request,'home/profile.html',context) 
+
+
+def accountSettings(request):
+    user = request.user.viewer  
+    form = ViewerForm(instance=user)
+    print(user)
+    if request.method == "POST":
+        form = ViewerForm(request.POST, request.FILES, instance=user)
+        if form.is_valid():
+            form.save()
+            return redirect('profile')
+
+    context = {'form' : form ,'user': user}
+    return render(request,'home/edit.html',context)

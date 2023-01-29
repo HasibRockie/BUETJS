@@ -1,0 +1,104 @@
+
+{% extends "base.html" %} 
+{% load static %} 
+
+{% block title %} - Schedule {% endblock %} 
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/schedule.css' %}" />
+{% endblock %}
+
+{% block body_block %}
+
+<div class="profile">
+    {% comment %} <h3>Profile</h3>
+	<p>Full Name: {{request.user.customer.name}}</p>
+	<p>Username: {{request.user.username}} </p>
+	<p>E-mail: {{request.user.customer.email}} </p>
+	<p>Phone: {{request.user.customer.phone}} </p>
+	<img src="{{request.user.customer.profile_pic.url}}" height="200px" alt="">
+
+	<hr>
+	<h2>Orders:</h2>
+	{% for order in orders %}
+	<li>{{order.product.name}} - {{order.status}} - {{order.date_created}}</li>
+	{% endfor %} {% endcomment %}
+
+
+
+	<section style="background-color: #eee;">
+		<div class="container py-5">
+		  
+	  
+		  <div class="row">
+			<div class="col-lg-4">
+			  <div class="card mb-4">
+				<div class="card-body text-center">
+				  <img src="{{viewer.profile_pic.url}}" alt="avatar"
+					class="rounded-circle img-fluid" style="width: 150px; height:150px;">
+				  <h5 class="my-3"> {{viewer.name}}</h5>
+				  <p class="text-muted mb-1">@{{request.user.username}}</p>
+				  <div class="d-flex justify-content-center mb-2">
+					<a type="button" href="/profile/edit" class="btn btn-outline-primary ms-1">Edit Profile</a>
+				  </div>
+				</div>
+			  </div>
+			</div>
+
+
+			<div class="col-lg-8">
+			  <div class="card mb-4">
+				<div class="card-body">
+				  <div class="row">
+					<div class="col-sm-3">
+					  <p class="mb-0">Full Name</p>
+					</div>
+					<div class="col-sm-9">
+					  <p class="text-muted mb-0">{{viewer.name}}</p>
+					</div>
+				  </div>
+				  <hr>
+				  <div class="row">
+					<div class="col-sm-3">
+					  <p class="mb-0">Email</p>
+					</div>
+					<div class="col-sm-9">
+					  <p class="text-muted mb-0">{{viewer.email}}</p>
+					</div>
+				  </div>
+				  <hr>
+				  <div class="row">
+					<div class="col-sm-3">
+					  <p class="mb-0">Phone</p>
+					</div>
+					<div class="col-sm-9">
+					  <p class="text-muted mb-0">{{viewer.phone}}</p>
+					</div>
+				  </div>
+				</div>
+			  </div>
+
+
+
+
+				
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  </section>
+
+
+
+</div>
+
+{% endblock body_block %}
+
+{% block script %} 
+
+    <script>
+
+    </script>
+
+
+{% endblock script %}

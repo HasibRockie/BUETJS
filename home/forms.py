@@ -1,6 +1,8 @@
 from django import forms
 from django.forms import fields
-from .models import Contact, Comment
+from .models import Contact, AllComment, Viewer
+from django.contrib.auth.models import User 
+from django.contrib.auth.forms import UserCreationForm
 
 class ContactForm(forms.ModelForm):
     class Meta():
@@ -9,7 +11,17 @@ class ContactForm(forms.ModelForm):
         
 class CommentForm(forms.ModelForm):
     class Meta():
-        model = Comment
-        fields = ('commentor_name', 'commentor_email', 'comment')  
+        model = AllComment
+        fields = ('comment',)  
         # fields = '__all__'
         
+class CreateUserForm(UserCreationForm):
+    class Meta:
+        model = User 
+        fields = ["first_name","last_name","is_superuser","username","email","password1","password2"] 
+
+class ViewerForm(forms.ModelForm):
+    class Meta:
+        model = Viewer
+        fields = '__all__'
+        exclude = ['user']

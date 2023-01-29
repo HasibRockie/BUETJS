@@ -1,0 +1,107 @@
+
+{% extends "base.html" %} 
+{% load static %} 
+
+{% block title %} - Signin {% endblock %} 
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/signup.css' %}" />
+{% endblock %}
+
+{% block body_block %}
+
+{% comment %} <section class="h-100 h-custom signup" style="background-color: #fff;">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-lg-8 col-xl-6">
+          <div class="card rounded-3 shadow">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Department_of_Architecture%2C_BUET.jpg/800px-Department_of_Architecture%2C_BUET.jpg"
+              class="w-100" style="border-top-left-radius: .3rem; border-top-right-radius: .3rem;"
+              alt="Sample photo">
+            <div class="card-body p-4 p-md-5">
+              <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">Login </h3>
+  
+              <form method="POST" action="" class="px-md-2">
+                {% csrf_token %}
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="fullname">Full Name</label>
+                  <input type="text" id="fullname" class="form-control" />
+                </div> 
+                
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="username">Username</label>
+                  <input type="text" name="username" id="username" class="form-control">
+                </div>  
+                
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="password">Password</label>
+                  <input type="password" name="password" id="password" class="form-control">
+                </div>  
+  
+                
+  
+                <button type="submit" value="Login" class="btn btn-success btn-lg mb-1">Sign in</button> 
+                <p class="text-danger"> {{form.errors}} </p>
+
+                {% for message in messages %}
+                <p class="messages">{{message}}</p>
+                {% endfor %}
+              </form>
+              <hr>
+              <div class="d-flex">
+                <h3 class="px-2">Don't have an account?</h3>
+                <a href="/signup" class="btn btn-success px-2">Create Account</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> {% endcomment %}
+
+
+          <!-- Sing in  Form -->
+          <section class="sign-in p-3 mt-5">
+            <div class="container card shadow">
+                <div class="signin-content">
+                    <div class="signin-image">
+                        <figure><img class="w-100" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Department_of_Architecture%2C_BUET.jpg/800px-Department_of_Architecture%2C_BUET.jpg" alt="sing up image"></figure>
+                        
+                    </div>
+
+                    <div class="signin-form">
+                        {% for message in messages %}
+                    <p class="messages text-success">{{message}}</p>
+                        {% endfor %} <hr>
+                        <h2 class="form-title">Sign In</h2>
+                        <form method="POST" class="register-form" id="login-form">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="username"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input type="text" name="username" id="username" placeholder="Your Username"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="password"><i class="zmdi zmdi-lock"></i></label>
+                                <input type="password" name="password" id="password" placeholder="Password"/>
+                            </div>
+                            
+                            <div class="form-group form-button">
+                                <input type="submit" name="signin" id="signin" class="form-submit" value="Log in"/>
+                            </div>
+                        </form>  <hr>
+                        <div class="">
+                            <span class="social-label py-2">Have no account? </span><a href="/signup">Sign up</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+  {% endblock body_block %}
+
+{% block script %} 
+<script>
+
+</script>
+
+{% endblock script %}

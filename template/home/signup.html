@@ -1,0 +1,162 @@
+
+{% extends "base.html" %} 
+{% load static %} 
+
+{% block title %} - Signup {% endblock %} 
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/signup.css' %}" />
+{% endblock %}
+
+{% block body_block %}
+
+{% comment %} <section class="h-100 h-custom signup" style="background-color: #fff;">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-lg-8 col-xl-6">
+          <div class="card rounded-3 shadow">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Department_of_Architecture%2C_BUET.jpg/800px-Department_of_Architecture%2C_BUET.jpg"
+              class="w-100" style="border-top-left-radius: .3rem; border-top-right-radius: .3rem;"
+              alt="Sample photo">
+            <div class="card-body p-4 p-md-5">
+              <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">Registration Info</h3>
+  
+              <form method="POST" action="" class="px-md-2">
+                {% csrf_token %}
+                 <div class="form-outline mb-4">
+                  <label class="form-label" for="fullname">Full Name</label>
+                  <input type="text" id="fullname" class="form-control" />
+                </div> 
+                
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="firstname">First Name</label>
+                  {{form.first_name}}
+                </div>
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="lastname">Last Name</label>
+                  {{form.last_name}}
+                </div>
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="username">Username</label>
+                  {{form.username}}
+                </div>
+                
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="email">E-mail</label>
+                  {{form.email}}
+                </div>  
+                
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="password">Password</label>
+                  {{form.password1}}
+                </div>  
+                
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="confirm">Confirm Password</label>
+                  {{form.password2}}
+                </div>  
+  
+                
+  
+                <button type="submit" class="btn btn-success btn-lg mb-1">Submit</button>  {% endcomment %}
+                
+                
+                {% comment %} {% for field in form %}
+                {{field.label}}  
+                {{field}}
+                {% endfor %}  {% endcomment %}
+
+                {% comment %} {{form.username.label}}
+                {{form.username}}
+                {{form.fullname.label}}
+                {{form.fullname}}
+                {{form.email.label}}
+                {{form.email}}
+                {{form.password1.label}}
+                {{form.password}}
+                {{form.password2.label}}
+                {{form.password2}}  {% endcomment %}
+                {% comment %} <p class="text-danger"> {{form.errors}} </p>
+              </form>
+              <hr>
+              <div class="d-flex">
+                <h3 class="px-2">Already have an account?</h3>
+                <a href="/signin" class="btn btn-success px-2">Login</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> {% endcomment %}
+
+
+
+
+          <!-- Sign up form -->
+          <section class="signup mt-5 py-5">
+            <div class="container card shadow">
+                <div class="signup-content">
+                    <div class="signup-form">
+                        <h2 class="form-title">Sign up</h2>
+
+                        {% for message in messages %}
+                    <p class="messages text-success">{{message}}</p>
+                        {% endfor %} <hr>
+                        <form method="POST" action="">
+                            {% csrf_token %}
+                            <div class="form-group d-flex">
+                                <label for="first_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input type="text" name="first_name" id="first_name" placeholder="First Name"/>
+                                <label for="last_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input type="text" name="last_name" id="last_name" placeholder="Last Name"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="username"><i class="zmdi zmdi-email"></i></label>
+                                <input type="text" name="username" id="username" placeholder="Username"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="email"><i class="zmdi zmdi-email"></i></label>
+                                <input type="email" name="email" id="email" placeholder="Your Email"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="password1"><i class="zmdi zmdi-lock"></i></label>
+                                <input type="password" name="password1" id="password1" placeholder="Password"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="password2"><i class="zmdi zmdi-lock-outline"></i></label>
+                                <input type="password" name="password2" id="password2" placeholder="Repeat your password"/>
+                            </div>
+                            
+                            <div class="form-group form-button">
+                                <button type="submit" class="btn btn-success btn-lg mb-1">Submit</button> 
+                                {% comment %} <input type="submit" name="signup" id="signup" class="form-submit" value="Register"/> {% endcomment %}
+                            </div>
+                        </form> <hr>
+
+                        <div>
+                            <span class="">Have no account? </span> <a href="/signin">
+                                Sign in 
+                            </a>
+                           
+                        </div>
+                    </div>
+                    <div class="signup-image">
+                        <figure><img class="w-100" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Department_of_Architecture%2C_BUET.jpg/800px-Department_of_Architecture%2C_BUET.jpg" alt="sing up image"></figure>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+  {% endblock body_block %}
+  {% block script %} 
+<script>
+
+    <script src="static/js/jquery.min.js"></script>
+    <script src="static/js/main.js"></script>
+
+</script>
+
+{% endblock script %}

@@ -14,4 +14,9 @@ urlpatterns = [
     path('blog/',views.blog, name="blog"),
     path('contact/',views.contact, name="contact"),
     path('posts/<str:id>/',views.post, name="post"),
+    path('signup/',views.signup, name="signup"),
+    path('signin/',views.signin, name="signin"),
+    path('logout/', views.logoutUser, name="logout"),
+    path('profile/', views.profile, name="profile"),
+    path('profile/edit/', views.accountSettings, name="edit"),
 ]
