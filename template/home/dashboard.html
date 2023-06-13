@@ -63,8 +63,14 @@
               <p class="text-muted mb-1">Blog Posts: {{blogs|length}}</p>
               <p class="text-muted mb-1">Alumni Posts: {{alumnies|length}}</p>
               <p class="text-muted mb-1">Sport Posts: {{sports|length}}</p> <hr>
-              <p class="text-muted mb-1"><a href="dashboard/add/post" class="btn btn-danger">Add Post</a>
-              <a href="dashboard/add/image" class="btn btn-danger">Add Image</a></p>
+              <p class="text-muted mb-1">
+                <a href="dashboard/add/post" class="btn btn-danger">Add Post</a>
+                <a href="dashboard/add/image" class="btn btn-danger">Add Image</a>
+                <a href="dashboard/add/member" class="btn btn-danger">Add Member</a> </p>
+              <p class="text-muted mb-1">
+                <a href="dashboard/edit/about" class="btn btn-danger">Edit About Us</a> 
+              </p>
+            
             </div>
           </div>
         
@@ -142,6 +148,43 @@
           
         </tbody>
       </table>
+
+
+            {% comment %} Panel Members  {% endcomment %}
+            <table class="table">
+              <h5 class="text-danger font-weight-bold">Panel Members Informations</h5>
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Image</th>
+                  <th scope="col">Designation</th>
+                  <th scope="col">E-mail</th>
+                  <th scope="col">Phone</th>
+                  <th scope="col">Update</th>
+                  <th scope="col">Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+                  {% for member in members %}
+                  
+                  
+                <tr>
+                  <th scope="row"> </th>
+                  <td><img src="{{member.image.url}}" alt="image"
+                    class="rounded img-fluid" style="width: 80px;"></td>
+                  <td>{{member.name}}</td>
+                  <td>{{member.designation}}</td>
+                  <td>{{member.email}}</td>
+                  <td>{{member.phone}}</td>
+                  <td><a href="dashboard/edit/members/{{member.id}}" class="btn btn-success">Edit</a></td>
+                  <td><a href="dashboard/edit/members/{{member.id}}/delete" class="btn btn-danger">Delete</a></td>
+                </tr>
+      
+                {% endfor %}
+                
+              </tbody>
+            </table>
 
 
             {% comment %} Viewers  {% endcomment %}

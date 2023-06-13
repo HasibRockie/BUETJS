@@ -41,8 +41,8 @@
 
 
 		<div class="col-lg-8 section-center">
-            <h3 class="text-bold text-center">Add Image</h3> <hr>
-            
+            <h3 class="text-bold text-center">Edit About Us</h3> <hr>
+
 			<div class="container">
 				<div class="row">
 					<div class="booking-form">
@@ -50,20 +50,12 @@
                             {% csrf_token %}
 							{% comment %} {{form.as_p}} {% endcomment %}
 							
-							<div class="row">
-							
-								<div class="col-md-12">
-									<div class="form-group">
-										<span class="form-label">Image</span>
-										<input class="form-control" type="file" name="image" accept="image/*" id="image">
-									</div>
-								</div>
-							</div>
+
                             <div class="row">
 								<div class="col-md-12">
 									<div class="form-group">
-										<span class="form-label">Caption</span>
-										<input class="form-control" type="textarea" rows="5" id="caption" name="caption" >
+										<span class="form-label">Description</span>
+										<input class="form-control" type="textarea" rows="20" id="description" name="description" value="{{about.description}}">
 									</div>
 								</div>
 								

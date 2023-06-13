@@ -16,6 +16,11 @@ body {
   justify-content: space-around!important;
 } */
 
+.developer{
+  font-weight: bold;
+  color: #ac1f26;
+}
+
 .footer a{
   text-decoration: none;
 }
